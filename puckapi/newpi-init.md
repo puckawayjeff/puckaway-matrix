@@ -17,6 +17,27 @@ Then
 
     sudo adduser pi www-data
     sudo chown www-data:www-data /var/www/*
+    sudo a2enmod rewrite
+
+Add this to /etc/apache2/sites-enabled/000-default.conf right after "DocumentRoot /var/www/html"
+
+    <Directory /var/www >
+            AllowOverride All
+    </Directory>
+
+Add these lines to the bottom of the file for any HTTP redirects for the VPN tunnel (use ports to punch through to other devices on Puckaway network. Add as many as needed.
+    
+    Listen 19100
+    <VirtualHost *:19100>
+            ProxyPass / http://192.168.1.100:80/
+            ProxyPassReverse / http://192.168.1.100:80/
+    </VirtualHost>
+
+Run this any time the config file changes.
+
+    sudo service apache2 restart
+    
+
 
 Mount external usb to /var/www/html/usb per instructions at <http://www.htpcguides.com/properly-mount-usb-storage-raspberry-pi/>
 
