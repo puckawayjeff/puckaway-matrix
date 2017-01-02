@@ -20,11 +20,4 @@ Then
 
 Mount external usb to /var/www/html/usb per instructions at <http://www.htpcguides.com/properly-mount-usb-storage-raspberry-pi/>
 
-Pi user should now have full read/write access to files within the www folder.
-
-### Random note for debugging ###
-    tail -f /var/log/apache2/error.log
-This is a good way to watch what's getting fucked up in real time.  
-
-    sudo service apache2 restart
-Does what it says on the tin.
+Pi user should now have full read/write access to files within the www folder. UPS monitoring over USB, exFAT drive support, PHP Curl and GD Image Library commands, and FTP access are all ready. Raspbian PIXEL will no longer automount USB drives, either.
