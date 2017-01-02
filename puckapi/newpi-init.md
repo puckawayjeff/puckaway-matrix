@@ -12,7 +12,7 @@ In /etc/vsftpd.conf:
 
     write_enable=YES
     local_umask=022
-    use_localtime=YES
+    use_localtime=NO
 
 Then
 
