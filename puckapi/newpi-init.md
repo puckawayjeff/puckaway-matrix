@@ -3,7 +3,7 @@ Install latest raspbian, perform apt-get update, dist-upgrade, autoremove
 
     sudo apt-get install apache2 -y
     sudo apt-get install php5 libapache2-mod-php5 php5-curl php5-gd -y
-    sudo apt-get install vsftpd apcupsd fswebcam -y
+    sudo apt-get install vsftpd apcupsd fswebcam libav-tools -y
     sudo apt-get remove usbmount --purge
     sudo apt-get install exfat-tools -y
  
