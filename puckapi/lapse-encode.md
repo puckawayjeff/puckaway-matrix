@@ -8,7 +8,7 @@ Use gstreamer to have the hardware encoders do the heavy lifting. This creates t
 (Assumes this is run from the actual directory for now)
 
     gst-launch-1.0 multifilesrc location=camX-%04d.jpg index=1 caps="image/jpeg,framerate=30/1" !\
-    jpegdec ! queue ! omxh264enc target-bitrate=3000000 control-rate=variable !\
+    jpegdec ! queue ! omxh264enc target-bitrate=3200000 control-rate=variable !\
     video/x-h264,stream-format=byte-stream,width=1280,height=720,framerate=30/1,profile=high !\
     h264parse ! mp4mux faststart=true ! filesink location=output.mp4
     
