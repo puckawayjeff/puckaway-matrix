@@ -6,9 +6,9 @@ https://www.reddit.com/r/raspberry_pi/comments/5677qw/hardware_accelerated_x264_
 
 Example command:
 
-    ffmpeg -c:v h264_mmal -i /var/www/html/usb/video/cam1/20170507.mp4 -c:v h264_omx -c:a copy -b:v 2400k /var/www/html/usb/video/cam1/20170507_test-2400.mp4
+    ffmpeg -c:v h264_mmal -i /var/www/html/usb/video/cam1/20170507.mp4 -c:v h264_omx -c:a copy -b:v 2700k /var/www/html/usb/video/cam1/20170507-2700.mp4
     
-2400 kbps seems to be a good rate. Gives us ~60MB output files.
+2700 kbps seems to be a good rate. Gives us ~60MB output files.
 
 ## gstreamer Method ##
 
