@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteBase /cam/
+RewriteRule ^cam([0-9]{1,2})-([a-z]{1})\.jpg$ /cam/cameras.php?cam=$1&overlay=$2 [L]
+RewriteRule ^cam([0-9]{1,2})\.jpg$ /cam/cameras.php?cam=$1 [L]
