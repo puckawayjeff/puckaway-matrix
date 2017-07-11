@@ -28,10 +28,6 @@ switch ($cam) {
 		$imageurl = "http://10.0.0.10/Streaming/Channels/1/picture";
 		$txtLocation = "Driveway";
 		break;
-	case 9:
-		$imageurl = "test";
-		$txtLocation = "Test";
-		break;
 	case 0:
 		$imageurl = "traffic";
 		$txtLocation = "Traffic Cams";
@@ -61,9 +57,6 @@ if ($imageurl == "traffic") {
 	imagedestroy($trafcam6);
 	$txtDateStamp = NULL;
 }
-elseif ($imageurl == "test") {
-	$srcImage = imagecreatefromstring(file_get_contents('/volume1/web/cam/error.jpg'));
-}
 else {
 	include 'cam-passwd.php';//stores camera password as $curlpass
 	$ch = curl_init();
@@ -75,7 +68,7 @@ else {
 	$data = curl_exec($ch);
 	if(curl_errno($ch)){
 		// Show placeholder image and don't try to get sensor data or generate overlay
-		$srcImage = imagecreatefromstring(file_get_contents('https://puckaway.org/cam/error.jpg'));
+		$srcImage = imagecreatefromstring(file_get_contents('/volume1/web/cam/error.jpg'));
 		$noDHT = 1;
 		$disableTTF = 1;
 	}
