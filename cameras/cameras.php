@@ -37,22 +37,29 @@ switch ($cam) {
 }
 if ($imageurl == "traffic") {
 	$srcImage = imagecreatetruecolor(1280,720);
-	$trafcam1 = imagecreatefromstring(file_get_contents('http://www.511wi.gov/web/CctvImageHandler.ashx?networkID=MILWAUKEE&deviceID=CCTV-70-0074')); // County Z
+	// This is a workaround for the NAS not trusting the cert for some reason...
+	$arrContextOptions=array(
+		"ssl"=>array(
+			"verify_peer"=>false,
+			"verify_peer_name"=>false,
+		),
+	); 
+	$trafcam1 = imagecreatefromstring(file_get_contents('https://511wi.gov/map/Cctv/CCTV-70-0074--1', false, stream_context_create($arrContextOptions))); // County Z
 	imagecopyresampled($srcImage, $trafcam1, 0, 44, 3, 3, 426, 315, 346, 256);
 	imagedestroy($trafcam1);
-	$trafcam2 = imagecreatefromstring(file_get_contents('http://www.511wi.gov/web/CctvImageHandler.ashx?networkID=MILWAUKEE&deviceID=CCTV-70-0061')); // Wis 26
+	$trafcam2 = imagecreatefromstring(file_get_contents('https://511wi.gov/map/Cctv/CCTV-70-0061--1', false, stream_context_create($arrContextOptions))); // Wis 26
 	imagecopyresampled($srcImage, $trafcam2, 427, 44, 3, 3, 426, 315, 346, 256);
 	imagedestroy($trafcam2);
-	$trafcam3 = imagecreatefromstring(file_get_contents('http://www.511wi.gov/web/CctvImageHandler.ashx?networkID=MILWAUKEE&deviceID=CCTV-70-0062')); // Wis 44
+	$trafcam3 = imagecreatefromstring(file_get_contents('https://511wi.gov/map/Cctv/CCTV-70-0062--1', false, stream_context_create($arrContextOptions))); // Wis 44
 	imagecopyresampled($srcImage, $trafcam3, 854, 44, 3, 3, 426, 315, 346, 256);
 	imagedestroy($trafcam3);
-	$trafcam4 = imagecreatefromstring(file_get_contents('http://www.511wi.gov/web/CctvImageHandler.ashx?networkID=MILWAUKEE&deviceID=CCTV-70-0063')); // 9th Ave
+	$trafcam4 = imagecreatefromstring(file_get_contents('https://511wi.gov/map/Cctv/CCTV-70-0063--1', false, stream_context_create($arrContextOptions))); // 9th Ave
 	imagecopyresampled($srcImage, $trafcam4, 0, 360, 3, 3, 426, 315, 346, 256);
 	imagedestroy($trafcam4);
-	$trafcam5 = imagecreatefromstring(file_get_contents('http://www.511wi.gov/web/CctvImageHandler.ashx?networkID=MILWAUKEE&deviceID=CCTV-70-0064')); // Wis 21
+	$trafcam5 = imagecreatefromstring(file_get_contents('https://511wi.gov/map/Cctv/CCTV-70-0064--1', false, stream_context_create($arrContextOptions))); // Wis 21
 	imagecopyresampled($srcImage, $trafcam5, 427, 360, 3, 3, 426, 315, 346, 256);
 	imagedestroy($trafcam5);
-	$trafcam6 = imagecreatefromstring(file_get_contents('http://www.511wi.gov/web/CctvImageHandler.ashx?networkID=MILWAUKEE&deviceID=CCTV-70-0065')); // US 45
+	$trafcam6 = imagecreatefromstring(file_get_contents('https://511wi.gov/map/Cctv/CCTV-70-0065--1', false, stream_context_create($arrContextOptions))); // US 45
 	imagecopyresampled($srcImage, $trafcam6, 854, 360, 3, 3, 426, 315, 346, 256);
 	imagedestroy($trafcam6);
 	$txtDateStamp = NULL;
