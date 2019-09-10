@@ -30,7 +30,8 @@ while True:
         temperature = temperature * 9/5.0 + 32
         # compose MQTT messages
         msgs = [("dht/"+area_name+"/temperature", round(temperature,2)),
-            ("dht/"+area_name+"/humidity", round(humidity,2))]
+            ("dht/"+area_name+"/humidity", round(humidity,2)),
+            ("dht/"+area_name+"/time", int(time.time()))]
         # publish messages to MQTT broker
         publish.multiple(msgs, hostname=mqtt_broker, client_id=socket.gethostname())
     # chill out until 30 seconds have passed since script started
