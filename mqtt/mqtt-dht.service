@@ -1,0 +1,12 @@
+[Unit]
+Description=MQTT DHT Sensor Publisher Service
+After=multi-user.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi/dht
+ExecStart=/usr/bin/python3 /home/pi/dht/mqtt-dht.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
